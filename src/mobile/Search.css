@@ -1,0 +1,16 @@
+
+@media only screen and (max-width: 900px) {
+    .search-form>p{
+        width: 90%;
+        display: block;
+        margin: 0 auto 20px;
+    }
+    .suggs-container{
+        display: block;
+        padding-left: 18px;
+    }
+    .sugg {
+        float: left;
+        margin-bottom: 10px;
+    }
+}

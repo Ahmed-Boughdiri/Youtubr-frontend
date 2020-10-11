@@ -1,0 +1,22 @@
+
+@media only screen and (max-width: 900px) {
+    .preview-box {
+        height: 100%;
+        display: block;
+    }
+    .video-preview {
+        width: 100%;
+        height: 40%;
+    }
+    .video-details {
+        width: 100%;
+        height: 60%;
+        text-align: center;
+    }
+    .close {
+        height: 45px;
+        width: 45px;
+        left: 15px;
+        top: 15px;
+    }
+}
