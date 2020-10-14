@@ -1,21 +1,18 @@
-import React,{ useState,useEffect } from "react";
+import React,{ useState } from "react";
 import "../layout/Preview.css";
 import "../mobile/Preview.css";
-import { getDownloadLink, downloadVideo } from "../global/DownloadVideo";
+import { getDownloadLink } from "../global/DownloadVideo";
 
 const Preview:React.FC<any> = ({ close, data }) => {
   const [link,setLink] = useState("");
   const download = async(url:String) =>{
     const res:any = await getDownloadLink(url);
     setLink(res.url)
-    await downloadVideo(res.url);
-  }
-  useEffect(() =>{
-    console.log(data)
-  },[])
-  useEffect(() =>{
+    const href:any = document.querySelector("#download");
+    console.log(href)
     console.log(link)
-  },[link])
+    href?.click()
+  }
   return (
     <div className="preview">
       <div className="preview-box">
@@ -36,6 +33,10 @@ const Preview:React.FC<any> = ({ close, data }) => {
                   {data.description}
                 </p>
                 <button onClick={() =>download(data.link)}>Download Audio</button>
+                {
+                  // eslint-disable-next-line
+                  <a style={{display: "none"}} href={link} target="_balnk" id="download">Download</a>
+                }
             </div>
         </div>
       </div>

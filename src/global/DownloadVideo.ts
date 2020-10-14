@@ -6,7 +6,3 @@ export async function getDownloadLink(url:String) {
     const res = req.data;
     return res;
 }
-
-export async function downloadVideo(link:any) {
-    await axios.get(link)
-}

@@ -4,7 +4,7 @@ import SearchBar from "../components/SearchBar";
 import ResultsContainer from "../components/ResultsContainer";
 import Preview from "../components/Preview";
 import getVideos from "../global/getVideos";
-import { searchValue } from "../global/searchValue";
+import { searchValue, setSearchValue } from "../global/searchValue";
 
 
 const Results = () =>{
@@ -13,6 +13,7 @@ const Results = () =>{
     const [loaded,setLoaded] = useState(false);
     const [hasLoaded,setHasLoaded] = useState(false);
     const [openedVideo,setOpenedVideo] = useState({});
+    const [searchBarValue,setSearchBarValue] = useState("");
     const getResults = async() =>{
         const res = await getVideos(searchValue)
         return setResults(res)
@@ -32,10 +33,18 @@ const Results = () =>{
         setOpenedVideo(data);
         setPreview(true);
     }
+    const handleSubmit = (e:any) =>{
+        e.preventDefault();
+        setSearchValue(searchBarValue)
+        getResults();
+    }
     return(
         <div className="results">
             <h2>YouTubr</h2>
-            <SearchBar />
+            {
+                // TODO: Working on The Search Bar
+            }
+            <SearchBar value={searchBarValue} handleChange={(e:any) =>setSearchBarValue(e)} onClick={handleSubmit} />
             <ResultsContainer open={openPreview} videos={results} />
             {
                 (preview) && <Preview close={() =>setPreview(false)} data={openedVideo} />
