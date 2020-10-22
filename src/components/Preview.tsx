@@ -8,10 +8,9 @@ const Preview:React.FC<any> = ({ close, data }) => {
   const download = async(url:String) =>{
     const res:any = await getDownloadLink(url);
     setLink(res.url)
-    const href:any = document.querySelector("#download");
+    const href = document.querySelector("#download") as HTMLAnchorElement;
     console.log(href)
     console.log(link)
-    href?.click()
   }
   return (
     <div className="preview">
@@ -33,10 +32,7 @@ const Preview:React.FC<any> = ({ close, data }) => {
                   {data.description}
                 </p>
                 <button onClick={() =>download(data.link)}>Download Audio</button>
-                {
-                  // eslint-disable-next-line
-                  <a style={{display: "none"}} href={link} target="_balnk" id="download">Download</a>
-                }
+                <a style={{opacity: 0}} href={link} target="_balnk" id="download">Download</a>
             </div>
         </div>
       </div>
